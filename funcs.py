@@ -26,3 +26,6 @@ def std(a):
         sum1 += (a[i]- avg)**2
     std = (sum1 / len(a))**0.5
     return round(float(std), 2)
+
+def mediane(a):
+   return -1

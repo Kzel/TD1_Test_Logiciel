@@ -26,7 +26,12 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.std([2, 4, 6, 8, 10]), 2.83)
 		self.assertEqual(funcs.std([1, 2, 5, 6, 7, 8]), 2.54)
 		self.assertEqual(funcs.std([1, 2, 3, 4, 7, 8]), 2.54)
-
+  
+	def test_mediane_func(self):
+		self.assertEqual(funcs.mediane([1, 2, 3, 4, 5]), 3)
+		self.assertEqual(funcs.mediane([6, 4, 2, 8, 10]), 6)
+		self.assertEqual(funcs.mediane([5, 2, 1, 6, 7, 8]), 5.5)
+		self.assertEqual(funcs.mediane([4, 2, 3, 1, 7, 8]), 3.5)
 
 if __name__ == '__main__':
 	unittest.main()
