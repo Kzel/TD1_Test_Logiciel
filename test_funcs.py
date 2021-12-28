@@ -33,5 +33,12 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.mediane([5, 2, 1, 6, 7, 8]), 5.5)
 		self.assertEqual(funcs.mediane([4, 2, 3, 1, 7, 8]), 3.5)
 
+ 
+	def test_arithmetic_func(self):
+		self.assertEqual(funcs.arithmetic([1, 3, 9, 27, 81]), False)
+		self.assertEqual(funcs.arithmetic([2, 4, 6, 8, 10]), True)
+		self.assertEqual(funcs.arithmetic([2, 4, 8, 16, 32, 64]), False)
+		self.assertEqual(funcs.arithmetic([1, 2, 3, 4, 5, 6]), True)
+  
 if __name__ == '__main__':
 	unittest.main()

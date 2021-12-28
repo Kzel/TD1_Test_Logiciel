@@ -33,3 +33,6 @@ def mediane(a):
         return a[int(len(a)/2)]
     else:
         return (a[int(len(a)/2)] + a[int(len(a)/2) - 1])/2
+    
+def arithmetic(a):
+    return -1
