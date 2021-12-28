@@ -51,3 +51,6 @@ def geometric(a):
         else:
             return False
     return True
+
+def arithmeticN(a, n):
+    return -1
