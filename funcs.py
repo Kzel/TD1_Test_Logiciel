@@ -42,3 +42,6 @@ def arithmetic(a):
         else:
             return False
     return True
+
+def geometric(a):
+   return -1

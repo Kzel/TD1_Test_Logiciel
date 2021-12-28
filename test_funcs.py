@@ -40,5 +40,11 @@ class TestFuncs(unittest.TestCase):
 		self.assertEqual(funcs.arithmetic([2, 4, 8, 16, 32, 64]), False)
 		self.assertEqual(funcs.arithmetic([1, 2, 3, 4, 5, 6]), True)
   
+	def test_geometric_func(self):
+		self.assertEqual(funcs.geometric([1, 3, 9, 27, 81]), True)
+		self.assertEqual(funcs.geometric([2, 4, 6, 8, 10]), False)
+		self.assertEqual(funcs.geometric([2, 4, 8, 16, 32, 64]), True)
+		self.assertEqual(funcs.geometric([1, 2, 3, 4, 7, 8]), False)
+  
 if __name__ == '__main__':
 	unittest.main()
