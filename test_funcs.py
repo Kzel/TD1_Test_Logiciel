@@ -31,6 +31,22 @@ class TestFuncs(unittest.TestCase):
 	def test_eprilickey(self):
 		self.assertEqual(funcs.get_eprikey(db_path,'BA!'),'thisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekey')
 		self.assertEqual(funcs.get_eprikey(db_path,'YiningBAO'),'this is eprivatekey2')
+  
+	def test_verify_username_length(self):
+		self.assertEqual(funcs.verify_username_length(db_path,'BA!'), False)
+		self.assertEqual(funcs.verify_username_length(db_path,'YiningBAO'), True)
+	
+	def test_verify_username_special_characters(self):
+		self.assertEqual(funcs.verify_username_special_characters(db_path,'BA!'), True)
+		self.assertEqual(funcs.verify_username_special_characters(db_path, 'YiningBAO'), False)
+  
+	def test_verify_key_length(self):
+		self.assertEqual(funcs.verify_key_length(db_path,'BA!'), False)
+		self.assertEqual(funcs.verify_key_length(db_path,'YiningBAO'), True)
+  
+	def test_verify_password(self):
+		self.assertEqual(funcs.verify_password(db_path,'BA!'), False)
+		self.assertEqual(funcs.verify_password(db_path,'YiningBAO'), True)
 	
 if __name__ == '__main__':
     funcs.drop_db(db_path)
