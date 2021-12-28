@@ -5,5 +5,8 @@ def max_int(a,b):
 		return a
 
 def min_int(a,b):
-    
-    return -1
+    if a < b :
+        return a
+    else :
+        return b
+
