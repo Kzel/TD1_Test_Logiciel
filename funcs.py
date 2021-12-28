@@ -35,4 +35,10 @@ def mediane(a):
         return (a[int(len(a)/2)] + a[int(len(a)/2) - 1])/2
     
 def arithmetic(a):
-    return -1
+    equ = a[1] - a[0]
+    for i in range(len(a)-1):
+        if a[i+1] - a[i] == equ:
+            continue
+        else:
+            return False
+    return True
