@@ -64,3 +64,6 @@ def arithmeticN(a, n):
         lis.append(lis[i] + equ)
     lis.pop(0)
     return True, lis
+
+def geometricN(a, n):
+    return -1
