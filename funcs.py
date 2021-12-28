@@ -11,4 +11,7 @@ def min_int(a,b):
         return b
 
 def average(a):
-    return -1
+    sum = 0
+    for i in range(len(a)):
+        sum += a[i]
+    return sum / len(a)
