@@ -34,3 +34,22 @@ def get_users(db_path):
 	users = cursor.execute(sql).fetchall()
 	users = [user[0] for user in users]
 	return users
+
+def get_password(db_path, username):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'SELECT password FROM Users WHERE username=?'
+	passwords = cursor.execute(sql,(username,)).fetchall()
+	return passwords[0][0]
+
+def log(db_path, username, password):
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    sql = "SELECT username, password FROM Users WHERE username=?"
+    log = cursor.execute(sql, (username,)).fetchall()
+    users = str(log[0][0])
+    passwords = get_password(db_path, username)
+    if users == username and passwords == password:
+        return True
+    else:
+        return False
