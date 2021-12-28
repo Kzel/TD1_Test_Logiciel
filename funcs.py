@@ -28,4 +28,8 @@ def std(a):
     return round(float(std), 2)
 
 def mediane(a):
-   return -1
+    a.sort()
+    if len(a)%2 == 1: 
+        return a[int(len(a)/2)]
+    else:
+        return (a[int(len(a)/2)] + a[int(len(a)/2) - 1])/2
