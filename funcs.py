@@ -12,4 +12,3 @@ def min_int(a,b):
 
 def average(a):
     return -1
-
