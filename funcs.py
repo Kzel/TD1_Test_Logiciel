@@ -15,3 +15,6 @@ def average(a):
     for i in range(len(a)):
         sum += a[i]
     return sum / len(a)
+
+def std(a):
+    return -1
