@@ -19,3 +19,18 @@ def add_user(db_path, username, password, spublickey, sprivatekey, epublickey, e
     cursor.execute(sql,(username, password, spublickey, sprivatekey, epublickey, eprivatekey))
     connect.commit()
     return True
+
+def delete_user(db_path, username):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'DELETE FROM Users WHERE username=?'
+	cursor.execute(sql,(username,))
+	connect.commit()
+
+def get_users(db_path):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'SELECT username FROM Users;'
+	users = cursor.execute(sql).fetchall()
+	users = [user[0] for user in users]
+	return users
