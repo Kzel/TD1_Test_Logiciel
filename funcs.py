@@ -53,3 +53,31 @@ def log(db_path, username, password):
         return True
     else:
         return False
+    
+def get_spubkey(db_path, username):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'SELECT spublickey FROM Users WHERE username=?'
+	spubkeys = cursor.execute(sql, (username,)).fetchall()
+	return spubkeys[0][0]
+
+def get_sprikey(db_path, username):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'SELECT sprivatekey FROM Users WHERE username=?'
+	sprikeys = cursor.execute(sql, (username,)).fetchall()
+	return sprikeys[0][0]
+
+def get_epubkey(db_path, username):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'SELECT epublickey FROM Users WHERE username=?'
+	epubkeys = cursor.execute(sql, (username,)).fetchall()
+	return epubkeys[0][0]
+
+def get_eprikey(db_path, username):
+	connect = sqlite3.connect(db_path)
+	cursor = connect.cursor()
+	sql = 'SELECT eprivatekey FROM Users WHERE username=?'
+	eprikeys = cursor.execute(sql, (username,)).fetchall()
+	return eprikeys[0][0]
