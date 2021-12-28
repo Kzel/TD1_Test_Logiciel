@@ -66,4 +66,14 @@ def arithmeticN(a, n):
     return True, lis
 
 def geometricN(a, n):
-    return -1
+    equ = a[1]/ a[0]
+    for i in range(len(a)-1):
+        if a[i+1] / a[i] == equ:
+            continue
+        else:
+            return False
+    lis = [a[len(a)-1]]
+    for i in range(n):
+        lis.append(lis[i]*equ)
+    lis.pop(0)
+    return True, lis
