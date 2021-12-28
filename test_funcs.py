@@ -15,6 +15,22 @@ class TestFuncs(unittest.TestCase):
 	def test_password(self):
 		self.assertEqual(funcs.get_password(db_path,'BA!'), '1234567')
 		self.assertEqual(funcs.get_password(db_path, 'YiningBAO'), 'Ab!123456')
+  
+	def test_spublickey(self):
+		self.assertEqual(funcs.get_spubkey(db_path,'BA!'),'this is spublickey1')
+		self.assertEqual(funcs.get_spubkey(db_path,'YiningBAO'),'this is spublickey2')
+	
+	def test_sprilickey(self):
+		self.assertEqual(funcs.get_sprikey(db_path,'BA!'),'this is sprivatekey1')
+		self.assertEqual(funcs.get_sprikey(db_path,'YiningBAO'),'this is sprivatekey2')
+	
+	def test_epublickey(self):
+		self.assertEqual(funcs.get_epubkey(db_path,'BA!'),'this is epublickey1')
+		self.assertEqual(funcs.get_epubkey(db_path,'YiningBAO'),'this is epublickey2')
+	
+	def test_eprilickey(self):
+		self.assertEqual(funcs.get_eprikey(db_path,'BA!'),'thisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekeythisiseprivatekey')
+		self.assertEqual(funcs.get_eprikey(db_path,'YiningBAO'),'this is eprivatekey2')
 	
 if __name__ == '__main__':
     funcs.drop_db(db_path)
