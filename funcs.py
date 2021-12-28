@@ -81,3 +81,78 @@ def get_eprikey(db_path, username):
 	sql = 'SELECT eprivatekey FROM Users WHERE username=?'
 	eprikeys = cursor.execute(sql, (username,)).fetchall()
 	return eprikeys[0][0]
+
+def verify_username_length(db_path, username):
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    sql = 'SELECT username, LENGTH(username) FROM Users;'
+    users = cursor.execute(sql ).fetchall()
+    users = [user[0] for user in users]
+    
+    for i in users:
+        if i == username:
+            print(i)
+            if len(i) <=3:
+                return False
+            else:
+                return True
+    return None
+
+def verify_username_special_characters(db_path, username):
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    sql = 'SELECT username FROM Users;'
+    users = cursor.execute(sql ).fetchall()
+    users = [user[0] for user in users]
+    for i in users:
+        if i == username:
+            if (any(not i.isalnum() for i in username)):
+                return True
+            else:
+                return False
+    return None
+        
+def verify_key_length(db_path, username):
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    sql = 'SELECT LENGTH(spublickey), LENGTH(sprivatekey), LENGTH(epublickey), LENGTH(eprivatekey) FROM Users WHERE username=?'
+    keys = cursor.execute(sql, (username,)).fetchall()
+    key = []
+    for i in range(4):
+        key += [key[i] for key in keys]
+    for i in key:
+        if i > 128:
+            return False
+        else:
+            continue
+    connect.commit()
+    return True
+
+def verify_password(db_path, username):
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    sql = 'SELECT password FROM Users WHERE username=?'
+    passwords = cursor.execute(sql, (username,)).fetchall()
+    password = [password[0] for password in passwords]
+    is_digital = 0
+    is_special = 0
+    is_upper = 0
+    is_lower = 0
+    for i in password:
+        if len(i) < 8:
+            return False
+        else:
+            if (any(not c.isdigit() for c in password)):
+                is_digital= 1
+            if (any(not c.isalnum() for c in password)):
+                is_special = 1
+            if (any(not c.islower() for c in password)):
+                is_lower = 1
+            if (any(not c.isupper() for c in password)):
+                is_upper = 1
+            if is_digital and is_special and is_lower and is_upper:
+                continue
+            else:
+                return False
+    return True
+
