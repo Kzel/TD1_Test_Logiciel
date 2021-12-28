@@ -44,4 +44,10 @@ def arithmetic(a):
     return True
 
 def geometric(a):
-   return -1
+    equ = a[1]/ a[0]
+    for i in range(len(a)-1):
+        if a[i+1] / a[i] == equ:
+            continue
+        else:
+            return False
+    return True
