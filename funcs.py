@@ -12,3 +12,10 @@ def drop_db(db_path):
     cursor.execute('DROP TABLE IF EXISTS Users')
     connect.commit()
 
+def add_user(db_path, username, password, spublickey, sprivatekey, epublickey, eprivatekey):
+    connect = sqlite3.connect(db_path)
+    cursor = connect.cursor()
+    sql = 'INSERT INTO Users (username, password, spublickey, sprivatekey, epublickey, eprivatekey) VALUES (?,?,?,?,?,?)'
+    cursor.execute(sql,(username, password, spublickey, sprivatekey, epublickey, eprivatekey))
+    connect.commit()
+    return True
